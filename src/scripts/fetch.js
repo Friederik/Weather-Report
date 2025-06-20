@@ -13,20 +13,14 @@ function request() {
 const requestConfig = request()
 
 
-fetch(requestConfig())
-    .then((res) => {
-        if (!res.ok) throw new Error('Ошбика загрузки')
-        return res.json()
-    })
-    .then((data) => {
-        console.log(data)
-    })
-    .catch((err) => {
-        console.log(err)
-    })
-
-function log(arg) {
-    console.log(arg)
-}
-
-export { log }
+// fetch(requestConfig())
+//     .then((res) => {
+//         if (!res.ok) throw new Error('Ошбика загрузки')
+//         return res.json()
+//     })
+//     .then((data) => {
+//         console.log(data)
+//     })
+//     .catch((err) => {
+//         console.log(err)
+//     })

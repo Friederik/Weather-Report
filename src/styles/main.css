@@ -1,80 +1,55 @@
-body {
-    height: 100dvh;
+* {
+  box-sizing: border-box;
 }
 
 .container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 2vh;
-    align-items: center;
+  height: 100dvh;
+  background-color: cornflowerblue;
+  padding-inline: 10vw;
+  padding-block: 5dvh;
 }
 
-.input {
-    width: 300px;
-    border: 2px solid brown;
-    border-radius: 5px;
-    box-sizing: border-box;
+.content {
+  border: 2px solid white;
+  width: 100%;
+  height: 100%;
 }
 
-.input:focus {
-    outline: none;
-    border-color: orange;
+.city-select {
+  width: 250px;
+  border: 2px solid #4a90e2;
+  border-radius: 8px;
+  background-color: white;
+  position: relative;
+  user-select: none;
+}
+.city-select__selected {
+  padding: 12px 15px;
+  cursor: pointer;
+}
+.city-select__options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border-top: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.city-select__option {
+  padding: 10px 15px;
+  cursor: pointer;
+}
+@media (hover: hover) {
+  .city-select__option:hover {
+    background-color: #f0f0f0;
+  }
 }
 
-.list {
-    max-height: 50dvh;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    padding-inline: 5vw;
-    gap: 1vh;
+.hidden {
+  display: none;
 }
 
-.task {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5vh;
-    padding: 1vh;
-    border: 3px solid royalblue;
-    border-radius: 5px;
-}
-
-.task--no-children {
-    background-color: black;
-    color: white;
-    border-color: red;
-}
-
-.task__header {
-    text-align: center;
-    font-size: 2rem;
-}
-
-.task__btns {
-    display: flex;
-    justify-content: center;
-    gap: 0.5vw;
-}
-
-.task__btn {
-    width: 100px;
-    color: white;
-    border-radius: 5px;
-}
-
-.task__btn--release {
-    background-color: green;
-}
-
-.task__btn--delete {
-    background-color: red;
-}
-
-.task__btn--released {
-    background-color: royalblue;
-}
-
-.task__btn--add {
-    background-color:purple;
-}
+/*# sourceMappingURL=main.css.map */

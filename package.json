@@ -1,0 +1,26 @@
+{
+  "name": "weather-report",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve .",
+    "sassy": "sass --watch src/styles/input.sass src/styles/main.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Friederik/Weather-Report.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Friederik/Weather-Report/issues"
+  },
+  "homepage": "https://github.com/Friederik/Weather-Report#readme",
+  "description": "",
+  "devDependencies": {
+    "sass": "^1.89.2",
+    "serve": "^14.2.4"
+  }
+}

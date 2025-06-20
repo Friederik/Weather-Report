@@ -7,13 +7,49 @@
     <link rel="stylesheet" href="src/styles/reset.css">
     <link rel="stylesheet" href="src/styles/normalize.css">
     <link rel="stylesheet" href="src/styles/main.css">
-    <script type="module" src="src/scripts/fetch.js" defer></script>
     <script type="module" src="src/scripts/events.js" defer></script>
+    <script type="module" src="src/scripts/fetch.js" defer></script>
 </head>
 <body>
     <div class="container">
-        Weather Report
-        <input class="input" type="text">
+        <main class="content">
+            <nav class="navigation">
+                <div id="city-select" class="city-select">
+                    <!-- <img src="" alt="" class="icon"> -->
+                    <div id="city-select__selected" class="city-select__selected">Выбери город</div>
+                    <div id="city-select__options" class="city-select__options hidden">
+                        <div class="city-select__option" data-value="Ekaterinburg" >Екатеринбург</div>
+                        <div class="city-select__option" data-value="Tobolsk" >Тобольск</div>
+                        <div class="city-select__option" data-value="Shadrinsk" >Шадринск</div>
+                        <div class="city-select__option" data-value="Moscow" >Москва</div>
+                        <div class="city-select__option" data-value="Saint-Petersburg" >Санкт-Петербург</div>
+                    </div>
+                </div>
+                <button id="get-data" class="button">Обновить</button>
+            </nav>
+            <section class="weather-data">
+                <article class="current-weather">
+                    div.current-weather__first-data
+                </article>
+                <nav class="weather-data__options">
+                    <button class="button weather-data__option" data-value="now" >Сегодня</button>
+                    <button class="button weather-data__option" data-value="tomorrow" >Завтра</button>
+                    <button class="button weather-data__option" data-value="after-tomorrow" >Послезавтра</button>
+                </nav>
+            </section>
+            <section class="weather-forecast">
+                <h1 class="weather-forecast__header">Прогноз</h1>
+                <div class="weather-forecast__wrapper">
+                    <button class="weather-forecast__button weather-forecast__button--left">left</button>
+                    <div class="weather-forecast__items">
+                        <article class="weather-forecast__item">
+
+                        </article>
+                    </div>
+                    <button class="weather-forecast__button weather-forecast__button--left">right</button>
+                </div>
+            </section>
+        </main>
     </div>
 </body>
 </html>
