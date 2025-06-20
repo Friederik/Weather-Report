@@ -14,22 +14,31 @@
     <div class="container">
         <main class="content">
             <nav class="navigation">
+                <img src="src/assets/Location.png" alt="Location" class="icon">
                 <div id="city-select" class="city-select">
-                    <!-- <img src="" alt="" class="icon"> -->
-                    <div id="city-select__selected" class="city-select__selected">Выбери город</div>
-                    <div id="city-select__options" class="city-select__options hidden">
-                        <div class="city-select__option" data-value="Ekaterinburg" >Екатеринбург</div>
-                        <div class="city-select__option" data-value="Tobolsk" >Тобольск</div>
-                        <div class="city-select__option" data-value="Shadrinsk" >Шадринск</div>
-                        <div class="city-select__option" data-value="Moscow" >Москва</div>
+                    <div id="city-select__selected" class="city-select__selected">Санкт-Петербург</div>
+                        <div id="city-select__options" class="city-select__options hidden">
+                            <div class="city-select__option" data-value="Ekaterinburg" >Екатеринбург</div>
+                            <div class="city-select__option" data-value="Tobolsk" >Тобольск</div>
+                            <div class="city-select__option" data-value="Shadrinsk" >Шадринск</div>
+                            <div class="city-select__option" data-value="Moscow" >Москва</div>
                         <div class="city-select__option" data-value="Saint-Petersburg" >Санкт-Петербург</div>
                     </div>
                 </div>
-                <button id="get-data" class="button">Обновить</button>
             </nav>
             <section class="weather-data">
                 <article class="current-weather">
-                    div.current-weather__first-data
+                    <div class="current-weather__first-data">
+                        <div class="current-weather__text">
+                            <h1 class="current-weather__temp">18 C</h1>
+                            <h2 class="current-weather__condition">Облачно</h2>
+                        </div>
+                        <img src="src/assets/Loading.webp" alt="" class="condition-icon condition-icon--large">
+                    </div>
+                    <div class="current-weather__second-data">
+                        <h3 class="current-weather__feelslike">Ощущается как 18</h3>
+                        <h3 class="current-weather__windchill">Ветер 6 м/c</h3>
+                    </div>
                 </article>
                 <nav class="weather-data__options">
                     <button class="button weather-data__option" data-value="now" >Сегодня</button>
@@ -38,7 +47,7 @@
                 </nav>
             </section>
             <section class="weather-forecast">
-                <h1 class="weather-forecast__header">Прогноз</h1>
+                <h2 class="weather-forecast__header">Прогноз</h2>
                 <div class="weather-forecast__wrapper">
                     <button class="weather-forecast__button weather-forecast__button--left">left</button>
                     <div class="weather-forecast__items">

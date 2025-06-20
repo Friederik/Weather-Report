@@ -1,0 +1,35 @@
+.navigation
+    display: flex
+    align-items: center
+
+.city-select
+    width: 250px
+    border-radius: 8px
+    color: white
+    position: relative
+    user-select: none
+    font-size: 1.5rem
+    border: 1px solid white
+
+    &__selected
+        padding: 1rem 2rem
+        cursor: pointer
+
+    &__options
+        position: absolute
+        top: 100%
+        left: 0
+        right: 0
+        border-top: 1px solid white
+        border-radius: 8px
+        background-color: #87CEFA
+        z-index: 10
+
+    &__option
+        padding: 10px 15px
+        cursor: pointer
+        background-color: #74caff
+
+        @media (hover:hover)
+            &:hover
+                background-color: #74caff
