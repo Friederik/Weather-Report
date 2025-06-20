@@ -1,3 +1,5 @@
+@use '_mixins' as mix
+
 .weather-data
     color: white
     display: flex
@@ -8,14 +10,27 @@
         flex-direction: column
         justify-content: space-between
 
+    &__option
+        border-radius: 8px
+        background-color: rgba(151, 151, 151, 0.1)
+        border: 0
+        color: white
+        @include mix.text-shadow
+
 .current-weather
     border-radius: 8px
     // padding: 2vw
     // background-color: dodgerblue
     flex-grow: 1
     font-weight: 700
+    display: flex
+    flex-direction: column
+    gap: 0.5rem
 
     &__first-data
         display: flex
         align-items: center
         justify-content: space-between
+
+    &__condition
+        font-size: 1.25rem

@@ -1,5 +1,6 @@
 @use 'sections/nav'
 @use 'sections/weather-data'
+@use 'sections/_mixins' as mix
 
 *
     box-sizing: border-box
@@ -9,6 +10,7 @@
     background-color: #87CEFA
     padding-inline: 10vw
     padding-block: 5dvh
+    @include mix.text-shadow
 
 .content
     width: 100%
