@@ -2,8 +2,8 @@
 
 function postData(data) {
     const current = {
-        temp: data.current.temp_c,
-        tempFeels: data.current.feelslike_c,
+        temp: data.current.temp_c.toFixed(0),
+        tempFeels: data.current.feelslike_c.toFixed(0),
         wind: (data.current.wind_kph / 3.6).toFixed(0),
         condition: data.current.condition.text,
         icon: 'https:' + data.current.condition.icon
@@ -14,6 +14,12 @@ function postData(data) {
     document.querySelector('#current-wind').textContent = current.wind
     document.querySelector('#current-condition').textContent = current.condition
     document.querySelector('#current-icon').src = current.icon  
+
+    const forecast = [
+        {
+            
+        }
+    ]
 }
 
 
