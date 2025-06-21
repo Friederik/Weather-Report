@@ -35,7 +35,8 @@ function convertData(data) {
 }
 
 function renderPreviews(data) {
-    renderCurrent(data)
+    console.log('w',data.current)
+    renderCurrent(data.current)
 
     const days = [
         document.querySelector('#now'),
@@ -52,16 +53,18 @@ function renderPreviews(data) {
 }
 
 function renderCurrent(data) {
-    document.querySelector('#current-temp').textContent = data.current.temp
-    document.querySelector('#current-temp-feels').textContent = data.current.tempFeels
-    document.querySelector('#current-wind').textContent = data.current.wind
-    document.querySelector('#current-condition').textContent = data.current.condition
-    document.querySelector('#current-icon').src = data.current.icon 
+    document.querySelector('#current-temp').textContent = data.temp
+    document.querySelector('#current-temp-feels').textContent = data.tempFeels
+    document.querySelector('#current-wind').textContent = data.wind
+    document.querySelector('#current-condition').textContent = data.condition
+    document.querySelector('#current-icon').src = data.icon 
 }
 
 function request() {
     const requestData = {
         city: 'Ekaterinburg',
+        current: {},
+        forecast: {}
     }    
     return {
         async getData() {
@@ -90,6 +93,9 @@ function request() {
         changeCity(cityName) {
             requestData.city = cityName
             console.log(`Выбран город: ${requestData.city}`)
+        },
+        getDownloadedData() {
+            return {...requestData}
         }
     }  
 }
@@ -123,3 +129,42 @@ document.addEventListener('click', (e) => {
     options.classList.add('hidden')
   }
 })
+
+
+const buttons = [
+    document.querySelector('#current-time'),
+    document.querySelector('#now'),
+    document.querySelector('#tomorrow'),
+    document.querySelector('#after-tomorrow')
+]
+
+
+buttons.forEach((butt) => {
+    butt.addEventListener('click', () => {
+        buttons.forEach((b) => {
+            b.classList.remove('button--selected')
+        })
+        butt.classList.add('button--selected')
+
+        const data = requestConfig.getDownloadedData()
+        switch (butt.id) {
+            case 'current-time':
+                console.log(data.current)
+                renderCurrent(data.current)
+                break
+            case 'now':
+                console.log(data.forecast[0])
+                renderCurrent(data.forecast[0])
+                break
+            case 'tomorrow':
+                console.log(data.forecast[1])
+                renderCurrent(data.forecast[1])
+                break
+            case 'after-tomorrow':
+                console.log(data.forecast[2])
+                renderCurrent(data.forecast[2])
+                break     
+        }
+    })
+})
+

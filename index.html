@@ -15,7 +15,7 @@
     <div class="container">
         <main class="content">
             <nav class="navigation">
-                <img src="src/assets/Location.png" alt="Location" class="icon">
+                <img id="current-time" src="src/assets/Location.png" alt="Location" class="icon button button--selected">
                 <div id="city-select" class="city-select">
                     <div id="city-select__selected" class="city-select__selected">Екатеринбург</div>
                     <div id="city-select__options" class="city-select__options hidden">
@@ -32,8 +32,8 @@
                     <div class="current-weather__first-data">
                         <div class="current-weather__text">
                             <h1 class="current-weather__temp"><span id="current-temp">26</span> °C</h1>
-                        <h3 class="current-weather__feelslike"><span class="mini-text">Ощущается как<br></span><span id="current-temp-feels">18</span> °C</h3>
-                        <h3 class="current-weather__windchill"><span class="mini-text">Ветер </span><span id="current-wind">6</span> м/c</h3>    
+                            <h2 class="current-weather__feelslike"><span class="mini-text">Ощущается как<br></span><span id="current-temp-feels">18</span> °C</h2>
+                            <h2 class="current-weather__windchill"><span class="mini-text">Ветер </span><span id="current-wind">6</span> м/c</h2>    
                         </div>
                         <img id="current-icon" src="src/assets/sun_demo.png" alt="" class="condition-icon condition-icon--large condition-icon--animate">
                     </div>
@@ -42,7 +42,7 @@
                     </div>
                 </article>
                 <nav class="weather-data__options">
-                    <article class="weather-data__option" id="now" >
+                    <article class="weather-data__option button" id="now" >
                         <div class="weather-data__date">
                             <h2 class="weather-data__day">Сегодня</h2>
                             <h3 class="weather-data__date-number">Чт, 21 Июня</h3>
@@ -52,7 +52,7 @@
                             <img src="src/assets/sun_demo.png" alt="" class="condition-icon condition-icon--mini">
                         </div>
                     </article>
-                    <article class="weather-data__option" id="tomorrow" >
+                    <article class="weather-data__option button" id="tomorrow" >
                         <div class="weather-data__date">
                             <h2 class="weather-data__day">Завтра</h2>
                             <h3 class="weather-data__date-number">Чт, 21 Июня</h3>
@@ -62,7 +62,7 @@
                             <img src="src/assets/sun_demo.png" alt="" class="condition-icon condition-icon--mini">
                         </div>
                     </article>
-                    <article class="weather-data__option" id="after-tomorrow" >
+                    <article class="weather-data__option button" id="after-tomorrow" >
                         <div class="weather-data__date">
                             <h2 class="weather-data__day">Послезавтра</h2>
                             <h3 class="weather-data__date-number">Чт, 21 Июня</h3>
@@ -74,7 +74,7 @@
                     </article>
                 </nav>
             </section>
-            <section class="weather-forecast">
+            <section style="display: none;" class="weather-forecast">
                 <h2 class="weather-forecast__header">Прогноз</h2>
                 <div class="weather-forecast__wrapper">
                     <button class="weather-forecast__button weather-forecast__button--left">left</button>
