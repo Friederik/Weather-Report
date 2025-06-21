@@ -95,16 +95,16 @@
 
 @keyframes rotating {
   0% {
-    transform: rotateZ(0deg);
+    transform: translateY(0);
   }
   33% {
-    transform: rotateZ(15deg);
+    transform: translateY(0.2rem);
   }
   66% {
-    transform: rotateZ(-15deg);
+    transform: translateY(-0.2rem);
   }
   100% {
-    transform: rotateZ(0deg);
+    transform: translateY(0);
   }
 }
 * {
@@ -162,6 +162,10 @@
 }
 .condition-icon--mini {
   height: 20px;
+}
+
+.mini-text {
+  font-size: 0.75rem;
 }
 
 /*# sourceMappingURL=main.css.map */

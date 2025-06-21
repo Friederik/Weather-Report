@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="src/styles/reset.css">
     <link rel="stylesheet" href="src/styles/normalize.css">
     <link rel="stylesheet" href="src/styles/main.css">
-    <script type="module" src="src/scripts/events.js" defer></script>
     <script type="module" src="src/scripts/fetch.js" defer></script>
+    <!-- <script type="module" src="src/scripts/events.js" defer></script> -->
 </head>
 <body>
     <div class="container">
@@ -16,7 +16,7 @@
             <nav class="navigation">
                 <img src="src/assets/Location.png" alt="Location" class="icon">
                 <div id="city-select" class="city-select">
-                    <div id="city-select__selected" class="city-select__selected">Санкт-Петербург</div>
+                    <div id="city-select__selected" class="city-select__selected">Екатеринбург</div>
                         <div id="city-select__options" class="city-select__options hidden">
                             <div class="city-select__option" data-value="Ekaterinburg" >Екатеринбург</div>
                             <div class="city-select__option" data-value="Tobolsk" >Тобольск</div>
@@ -30,14 +30,14 @@
                 <article class="current-weather">
                     <div class="current-weather__first-data">
                         <div class="current-weather__text">
-                            <h1 class="current-weather__temp">26 C</h1>
-                            <h2 class="current-weather__condition">Солнечно</h2>
+                            <h1 class="current-weather__temp"><span id="current-temp">26</span> °C</h1>
+                        <h3 class="current-weather__feelslike"><span class="mini-text">Ощущается как </span><span id="current-temp-feels">18</span> °C</h3>
+                        <h3 class="current-weather__windchill"><span class="mini-text">Ветер </span><span id="current-wind">6</span> м/c</h3>    
                         </div>
-                        <img src="src/assets/sun_demo.png" alt="" class="condition-icon condition-icon--large condition-icon--animate">
+                        <img id="current-icon" src="src/assets/sun_demo.png" alt="" class="condition-icon condition-icon--large condition-icon--animate">
                     </div>
                     <div class="current-weather__second-data">
-                        <h3 class="current-weather__feelslike">Ощущается как 18</h3>
-                        <h3 class="current-weather__windchill">Ветер 6 м/c</h3>
+                        <h2 class="current-weather__condition"><span id="current-condition" class="mini-text">В отдельных районах местами небольшой дождь с грозой</span></h2>
                     </div>
                 </article>
                 <nav class="weather-data__options">
