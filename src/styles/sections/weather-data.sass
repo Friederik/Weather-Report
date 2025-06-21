@@ -1,30 +1,13 @@
 @use '_mixins' as mix
 
-.weather-data
-    color: white
-    display: flex
-    gap: 2rem
-
-    &__options
-        display: flex
-        flex-direction: column
-        justify-content: space-between
-
-    &__option
-        border-radius: 8px
-        background-color: rgba(151, 151, 151, 0.1)
-        border: 0
-        color: white
-        @include mix.text-shadow
-
 .current-weather
     border-radius: 8px
-    // padding: 2vw
-    // background-color: dodgerblue
+    @include mix.background-transparent
     flex-grow: 1
     font-weight: 700
     display: flex
     flex-direction: column
+    justify-content: space-between
     gap: 0.5rem
 
     &__first-data
@@ -32,5 +15,37 @@
         align-items: center
         justify-content: space-between
 
+    &__second-data
+        padding-block: 2vw
+
     &__condition
         font-size: 1.25rem
+
+.weather-data
+    color: white
+    display: flex
+    gap: 2vw
+
+    &__options
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        gap: 0.5vw
+
+    &__option
+        border-radius: 8px
+        border: 0
+        color: white
+        @include mix.text-shadow
+        @include mix.background-transparent
+        display: flex
+        flex-direction: column
+        gap: 0.5vw
+
+    &__date-number
+        display: none
+
+    &__status
+        display: flex
+        justify-content: space-between
+        align-items: center

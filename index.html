@@ -30,10 +30,10 @@
                 <article class="current-weather">
                     <div class="current-weather__first-data">
                         <div class="current-weather__text">
-                            <h1 class="current-weather__temp">18 C</h1>
-                            <h2 class="current-weather__condition">Облачно</h2>
+                            <h1 class="current-weather__temp">26 C</h1>
+                            <h2 class="current-weather__condition">Солнечно</h2>
                         </div>
-                        <img src="src/assets/Loading.webp" alt="" class="condition-icon condition-icon--large">
+                        <img src="src/assets/sun_demo.png" alt="" class="condition-icon condition-icon--large condition-icon--animate">
                     </div>
                     <div class="current-weather__second-data">
                         <h3 class="current-weather__feelslike">Ощущается как 18</h3>
@@ -41,9 +41,36 @@
                     </div>
                 </article>
                 <nav class="weather-data__options">
-                    <button class="button weather-data__option" data-value="now" >Сегодня</button>
-                    <button class="button weather-data__option" data-value="tomorrow" >Завтра</button>
-                    <button class="button weather-data__option" data-value="after-tomorrow" >Послезавтра</button>
+                    <article class="weather-data__option" data-value="now" >
+                        <div class="weather-data__date">
+                            <h2 class="weather-data__day">Сегодня</h2>
+                            <h3 class="weather-data__date-number">Чт, 21 Июня</h3>
+                        </div>
+                        <div class="weather-data__status">
+                            <h2 class="weather-data__temp">18 C</h2>
+                            <img src="src/assets/sun_demo.png" alt="" class="condition-icon condition-icon--mini">
+                        </div>
+                    </article>
+                    <article class="weather-data__option" data-value="now" >
+                        <div class="weather-data__date">
+                            <h2 class="weather-data__day">Завтра</h2>
+                            <h3 class="weather-data__date-number">Чт, 21 Июня</h3>
+                        </div>
+                        <div class="weather-data__status">
+                            <h2 class="weather-data__temp">18 C</h2>
+                            <img src="src/assets/sun_demo.png" alt="" class="condition-icon condition-icon--mini">
+                        </div>
+                    </article>
+                    <article class="weather-data__option" data-value="now" >
+                        <div class="weather-data__date">
+                            <h2 class="weather-data__day">Послезавтра</h2>
+                            <h3 class="weather-data__date-number">Чт, 21 Июня</h3>
+                        </div>
+                        <div class="weather-data__status">
+                            <h2 class="weather-data__temp">18 C</h2>
+                            <img src="src/assets/sun_demo.png" alt="" class="condition-icon condition-icon--mini">
+                        </div>
+                    </article>
                 </nav>
             </section>
             <section class="weather-forecast">

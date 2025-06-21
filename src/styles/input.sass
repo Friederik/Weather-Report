@@ -2,13 +2,24 @@
 @use 'sections/weather-data'
 @use 'sections/_mixins' as mix
 
+@keyframes rotating
+    0%
+        transform: rotateZ(0deg)
+    33%
+        transform: rotateZ(15deg)
+    66%
+        transform: rotateZ(-15deg)
+    100%
+        transform: rotateZ(0deg)
+
 *
     box-sizing: border-box
 
 .container
-    height: 100dvh
-    background-color: #87CEFA
-    padding-inline: 10vw
+    min-height: 100dvh
+    background: #090979
+    background: linear-gradient(315deg,rgba(9, 9, 121, 1) 0%, rgba(9, 80, 121, 1) 35%, rgba(0, 212, 255, 1) 100%)
+    padding-inline: 5vw
     padding-block: 5dvh
     @include mix.text-shadow
 
@@ -32,6 +43,9 @@
     width: auto
     object-fit: contain
 
+    &--animate
+        animation: rotating 5s ease-in-out infinite
+
     &--large
         height: 70px
 
@@ -40,3 +54,6 @@
 
         @media (min-width: 1024px)
             height: 300px
+
+    &--mini
+        height: 20px
