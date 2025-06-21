@@ -1,6 +1,6 @@
 // API -----------------------------------------------
 
-function postData(data) {
+function convertData(data) {
     const current = {
         temp: data.current.temp_c.toFixed(0),
         tempFeels: data.current.feelslike_c.toFixed(0),
@@ -9,19 +9,55 @@ function postData(data) {
         icon: 'https:' + data.current.condition.icon
     }
 
-    document.querySelector('#current-temp').textContent = current.temp
-    document.querySelector('#current-temp-feels').textContent = current.tempFeels
-    document.querySelector('#current-wind').textContent = current.wind
-    document.querySelector('#current-condition').textContent = current.condition
-    document.querySelector('#current-icon').src = current.icon  
-
-    const forecast = [
-        {
-            
+    const forecast = data.forecast.forecastday.map((date) => {
+        return {
+            time: new Date(date.date),
+            temp: date.day.avgtemp_c.toFixed(0),
+            tempFeels: date.day.avgtemp_c.toFixed(0),
+            wind: (date.day.maxwind_kph / 3.6).toFixed(0),
+            condition: date.day.condition.text,
+            icon: 'https:' + date.day.condition.icon,
+            hours: date.hour.map((oneHour) => {
+                return {
+                    time: new Date(oneHour.time),
+                    temp_c: (oneHour.temp_c).toFixed(0),
+                    icon: 'https:' + oneHour.condition.icon,
+                    rain: oneHour.chance_of_rain
+                }
+            })
         }
-    ]
+    })
+
+    return {
+        current: current,
+        forecast: forecast
+    }
 }
 
+function renderPreviews(data) {
+    renderCurrent(data)
+
+    const days = [
+        document.querySelector('#now'),
+        document.querySelector('#tomorrow'),
+        document.querySelector('#after-tomorrow'),
+    ]
+
+    days.forEach((day, index) => {
+        const thisDayData = data.forecast[index]
+        day.querySelector('.weather-data__date-number').textContent = thisDayData.time
+        day.querySelector('.weather-data__temp-text').textContent = thisDayData.temp
+        day.querySelector('.condition-icon').src = thisDayData.icon
+    })
+}
+
+function renderCurrent(data) {
+    document.querySelector('#current-temp').textContent = data.current.temp
+    document.querySelector('#current-temp-feels').textContent = data.current.tempFeels
+    document.querySelector('#current-wind').textContent = data.current.wind
+    document.querySelector('#current-condition').textContent = data.current.condition
+    document.querySelector('#current-icon').src = data.current.icon 
+}
 
 function request() {
     const requestData = {
@@ -40,7 +76,12 @@ function request() {
                     return res.json()
                 })
                 .then((data) => {
-                    postData(data)
+                    const normalizedData = convertData(data)
+                    requestData.current = normalizedData.current
+                    requestData.forecast = normalizedData.forecast
+                    console.log(requestData)
+                    
+                    renderPreviews(requestData)
                 })
                 .catch((err) => {
                     console.log(err)
