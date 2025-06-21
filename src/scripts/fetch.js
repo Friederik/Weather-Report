@@ -23,7 +23,7 @@ function request() {
     }    
     return {
         async getData() {
-            const api = `http://api.weatherapi.com/v1/` +
+            const api = `https://api.weatherapi.com/v1/` +
                         `forecast.json?key=7b7ba9234b984c6eba9115539251906` +
                         `&q=${requestData.city}` +
                         `&lang=ru` +
