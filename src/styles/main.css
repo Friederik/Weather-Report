@@ -33,7 +33,7 @@
   border-top: 3px solid rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   background-color: rgba(0, 0, 0, 0.2);
-  padding: 1vw 3vw;
+  padding: 10px 15px;
   z-index: 10;
 }
 .city-select__option {
@@ -44,14 +44,14 @@
 @media (hover: hover) {
   .city-select__option:hover {
     background-color: rgba(0, 0, 0, 0.2);
-    padding: 1vw 3vw;
+    padding: 10px 15px;
   }
 }
 
 .current-weather {
   border-radius: 8px;
   background-color: rgba(0, 0, 0, 0.2);
-  padding: 1vw 3vw;
+  padding: 10px 15px;
   flex-grow: 1;
   font-weight: 700;
   display: flex;
@@ -63,6 +63,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.current-weather__temp {
+  white-space: nowrap;
 }
 .current-weather__second-data {
   padding-block: 2vw;
@@ -87,7 +90,7 @@
   color: white;
   text-shadow: 1px 1px 5px dodgerblue;
   background-color: rgba(0, 0, 0, 0.2);
-  padding: 1vw 3vw;
+  padding: 10px 15px;
   border: 4px solid rgba(0, 0, 0, 0.2);
   transition: all 0.4s;
   cursor: pointer;
