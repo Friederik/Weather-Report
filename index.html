@@ -74,16 +74,35 @@
                     </article>
                 </nav>
             </section>
-            <section style="display: none;" class="weather-forecast">
+            <section class="weather-forecast">
                 <h2 class="weather-forecast__header">Прогноз</h2>
                 <div class="weather-forecast__wrapper">
-                    <button class="weather-forecast__button weather-forecast__button--left">left</button>
-                    <div class="weather-forecast__items">
-                        <article class="weather-forecast__item">
-
+                    <!-- <nav class="weather-forecast__controller">
+                        <button class="weather-forecast__button">
+                            <img src="src/assets/arrow.png" alt="" class="button icon weather-forecast__arrow weather-forecast__arrow--left">
+                        </button>
+                        <button class="weather-forecast__button">
+                            <img src="src/assets/arrow.png" alt="" class="button icon weather-forecast__arrow weather-forecast__arrow--right">
+                        </button>
+                    </nav> -->
+                    <div class="weather-forecast__hours">
+                        <article class="weather-forecast__hour">
+                            <h3 class="weather-forecast__time">2:00</h3>
+                            <img src="src/assets/sun_demo.png" alt="" class="condition-icon condition-icon--mini">
+                            <p class="weather-forecast__temp">18 C</p>
+                            <div class="temp-status">
+                                <div class="temp-status__good"></div>
+                            </div>
+                            <div class="weather-forecast__second-data">
+                                <img src="src/assets/wind.png" alt="" class="condition-icon condition-icon--xmini">
+                                <p class="weather-forecast__wind">6 м/с</p>
+                            </div>
+                            <div class="weather-forecast__second-data">
+                                <img src="src/assets/rain-1.png" alt="" class="condition-icon condition-icon--xmini">
+                                <p class="weather-forecast__rain">59%</p>
+                            </div>
                         </article>
                     </div>
-                    <button class="weather-forecast__button weather-forecast__button--left">right</button>
                 </div>
             </section>
         </main>
