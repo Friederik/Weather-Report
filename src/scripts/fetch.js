@@ -1,7 +1,8 @@
-// API -----------------------------------------------
+// API -----------------------------------------------------------------------
 
 function convertData(data) {
     const current = {
+        time: new Date(data.location.localtime),
         temp: data.current.temp_c.toFixed(0),
         tempFeels: data.current.feelslike_c.toFixed(0),
         wind: (data.current.wind_kph / 3.6).toFixed(0),
@@ -21,6 +22,7 @@ function convertData(data) {
                 return {
                     time: new Date(oneHour.time),
                     temp_c: (oneHour.temp_c).toFixed(0),
+                    wind: (oneHour.wind_kph / 3.6).toFixed(0),
                     icon: 'https:' + oneHour.condition.icon,
                     rain: oneHour.chance_of_rain
                 }
@@ -32,32 +34,6 @@ function convertData(data) {
         current: current,
         forecast: forecast
     }
-}
-
-function renderPreviews(data) {
-    console.log('w',data.current)
-    renderCurrent(data.current)
-
-    const days = [
-        document.querySelector('#now'),
-        document.querySelector('#tomorrow'),
-        document.querySelector('#after-tomorrow'),
-    ]
-
-    days.forEach((day, index) => {
-        const thisDayData = data.forecast[index]
-        day.querySelector('.weather-data__date-number').textContent = thisDayData.time
-        day.querySelector('.weather-data__temp-text').textContent = thisDayData.temp
-        day.querySelector('.condition-icon').src = thisDayData.icon
-    })
-}
-
-function renderCurrent(data) {
-    document.querySelector('#current-temp').textContent = data.temp
-    document.querySelector('#current-temp-feels').textContent = data.tempFeels
-    document.querySelector('#current-wind').textContent = data.wind
-    document.querySelector('#current-condition').textContent = data.condition
-    document.querySelector('#current-icon').src = data.icon 
 }
 
 function request() {
@@ -104,6 +80,73 @@ const requestConfig = request()
 requestConfig.getData()
 
 
+// RENDER -----------------------------------------------------------------------
+
+function renderForecastHour(hourData, goodData) {
+    const hour = document.createElement('div')
+   
+    const time = hourData.time.getHours() + ':' + String(hourData.time.getMinutes()).padStart(2, '0')
+    // const goodK = goodData.
+
+    hour.innerHTML = `
+        <article class="weather-forecast__hour">
+            <h3 class="weather-forecast__time">${time}</h3>
+            <img src="${hourData.icon}" alt="" class="condition-icon condition-icon--mini">
+            <p class="weather-forecast__temp">${hourData.temp_c} °C</p>
+            <div class="temp-status">
+                <div class="temp-status__good"></div>
+            </div>
+            <div class="weather-forecast__second-data">
+                <img src="src/assets/wind.png" alt="" class="condition-icon condition-icon--xmini">
+                <p class="weather-forecast__wind">${hourData.wind} м/с</p>
+            </div>
+            <div class="weather-forecast__second-data">
+                <img src="src/assets/rain-1.png" alt="" class="condition-icon condition-icon--xmini">
+                <p class="weather-forecast__rain">${hourData.rain}%</p>
+            </div>
+        </article>
+    `
+
+    return hour
+}
+
+function renderPreviews(data) {
+    console.log(data.current)
+    renderCurrent(data.current)
+
+    const days = [
+        document.querySelector('#now'),
+        document.querySelector('#tomorrow'),
+        document.querySelector('#after-tomorrow'),
+    ]
+
+    days.forEach((day, index) => {
+        const thisDayData = data.forecast[index]
+        day.querySelector('.weather-data__date-number').textContent = thisDayData.time
+        day.querySelector('.weather-data__temp-text').textContent = thisDayData.temp
+        day.querySelector('.condition-icon').src = thisDayData.icon
+    })
+
+    renderForecastHours(data.forecast[0].hours)
+}
+
+function renderForecastHours(hoursData) {
+    console.log(hoursData)
+    const hours = document.querySelector('#forecast-block')
+    hours.innerHTML = ''
+    hoursData.forEach((hour) => {
+        hours.appendChild(renderForecastHour(hour))
+    })
+    
+}
+
+function renderCurrent(data) {
+    document.querySelector('#current-temp').textContent = data.temp
+    document.querySelector('#current-temp-feels').textContent = data.tempFeels
+    document.querySelector('#current-wind').textContent = data.wind
+    document.querySelector('#current-condition').textContent = data.condition
+    document.querySelector('#current-icon').src = data.icon 
+}
 
 // EVENTS --------------------------------------------------------------------
 
@@ -167,4 +210,5 @@ buttons.forEach((butt) => {
         }
     })
 })
+
 
