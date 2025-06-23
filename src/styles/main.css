@@ -20,11 +20,8 @@
     border: 4px solid white;
   }
 }
-.city-select:active {
-  border: 4px solid white;
-}
 .city-select--selected {
-  border-color: yellow;
+  border-color: orange;
 }
 .city-select__selected {
   padding: 1rem 2rem;
@@ -150,8 +147,8 @@
   transform: rotate(-90deg);
 }
 .weather-forecast__hours {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 0.5rem;
   height: 95%;
   overflow: auto;
@@ -166,6 +163,9 @@
   align-items: center;
   justify-content: space-between;
   white-space: nowrap;
+}
+.weather-forecast__hour--now {
+  border: 2px solid orange;
 }
 .weather-forecast__second-data {
   display: flex;
@@ -287,11 +287,8 @@
     border: 4px solid white;
   }
 }
-.button:active {
-  border: 4px solid white;
-}
 .button--selected {
-  border-color: yellow;
+  border-color: orange;
 }
 .button--selected {
   border-color: #FFA500;

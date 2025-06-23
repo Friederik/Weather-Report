@@ -63,6 +63,7 @@ function request() {
                     console.log(requestData)
                     
                     renderPreviews(requestData)
+                    scrollToNow(requestData.forecast[0].hours)
                 })
                 .catch((err) => {
                     console.log(err)
@@ -110,29 +111,28 @@ function renderError() {
 }
 
 function renderForecastHour(hourData, goodData) {
-    const hour = document.createElement('div')
+    const hour = document.createElement('article')
+    hour.classList.add('weather-forecast__hour')
    
     const time = hourData.time.getHours() + ':' + String(hourData.time.getMinutes()).padStart(2, '0')
     const goodK = (hourData.temp_c - goodData.min) / goodData.oneT
     const rainAsset = Math.floor(hourData.rain / 25)
 
     hour.innerHTML = `
-        <article class="weather-forecast__hour">
-            <h3 class="weather-forecast__time">${time}</h3>
-            <img src="${hourData.icon}" alt="" class="condition-icon condition-icon--mini">
-            <p class="weather-forecast__temp">${hourData.temp_c} °C</p>
-            <div class="temp-status">
-                <div style="width: ${goodK}%" class="temp-status__good"></div>
-            </div>
-            <div class="weather-forecast__second-data">
-                <img src="src/assets/wind.png" alt="" class="condition-icon condition-icon--xmini">
-                <p class="weather-forecast__wind">${hourData.wind} м/с</p>
-            </div>
-            <div class="weather-forecast__second-data">
-                <img src="src/assets/rain-${rainAsset}.png" alt="" class="condition-icon condition-icon--xmini">
-                <p class="weather-forecast__rain">${hourData.rain}%</p>
-            </div>
-        </article>
+        <h3 class="weather-forecast__time">${time}</h3>
+        <img src="${hourData.icon}" alt="" class="condition-icon condition-icon--mini">
+        <p class="weather-forecast__temp">${hourData.temp_c} °C</p>
+        <div class="temp-status">
+            <div style="width: ${goodK}%" class="temp-status__good"></div>
+        </div>
+        <div class="weather-forecast__second-data">
+            <img src="src/assets/wind.png" alt="" class="condition-icon condition-icon--xmini">
+            <p class="weather-forecast__wind">${hourData.wind} м/с</p>
+        </div>
+        <div class="weather-forecast__second-data">
+            <img src="src/assets/rain-${rainAsset}.png" alt="" class="condition-icon condition-icon--xmini">
+            <p class="weather-forecast__rain">${hourData.rain}%</p>
+        </div>
     `
 
     return hour
@@ -233,21 +233,40 @@ buttons.forEach((butt) => {
             case 'current-time':
                 console.log(data.current)
                 renderCurrent(data.current)
+                renderForecastHours(data.forecast[0].hours)
+                scrollToNow(data.forecast[0].hours)
                 break
             case 'now':
                 console.log(data.forecast[0])
                 renderCurrent(data.forecast[0])
+                renderForecastHours(data.forecast[0].hours)
+                scrollReset()
                 break
             case 'tomorrow':
                 console.log(data.forecast[1])
                 renderCurrent(data.forecast[1])
+                renderForecastHours(data.forecast[1].hours)
+                scrollReset()
                 break
             case 'after-tomorrow':
                 console.log(data.forecast[2])
                 renderCurrent(data.forecast[2])
+                renderForecastHours(data.forecast[2].hours)
+                scrollReset()
                 break     
         }
     })
 })
 
+function scrollToNow() {
+    const block = document.querySelector('#forecast-block')
+    const hourHeight = block.scrollHeight / 24
+    const hourNow = new Date().getHours()
 
+    block.children[hourNow].classList.add('weather-forecast__hour--now')
+    block.scrollTop = hourHeight * hourNow
+}
+
+function scrollReset() {
+    document.querySelector('#forecast-block').scrollTop = 0
+}

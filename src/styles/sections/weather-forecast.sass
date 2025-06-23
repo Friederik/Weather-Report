@@ -40,8 +40,8 @@
             transform: rotate(-90deg)
 
     &__hours
-        display: flex
-        flex-direction: column
+        display: grid
+        grid-template-columns: 1fr
         gap: 0.5rem
         height: 95%
         overflow: auto
@@ -55,6 +55,9 @@
         align-items: center
         justify-content: space-between
         white-space: nowrap
+
+        &--now
+            border: 2px solid orange
 
     &__second-data
         display: flex
