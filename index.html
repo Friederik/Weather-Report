@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="src/styles/main.css">
     <link rel="shortcut icon" href="src/assets/sun_demo.png" type="image/x-icon">
     <script type="module" src="src/scripts/fetch.js" defer></script>
-    <!-- <script type="module" src="src/scripts/events.js" defer></script> -->
 </head>
 <body>
     <div class="container">
@@ -22,6 +21,8 @@
                         <div class="city-select__option" data-value="Ekaterinburg" >Екатеринбург</div>
                         <div class="city-select__option" data-value="Tobolsk" >Тобольск</div>
                         <div class="city-select__option" data-value="Shadrinsk" >Шадринск</div>
+                        <div class="city-select__option" data-value="Tyumen">Тюмень</div>
+                        <div class="city-select__option" data-value="Kazan">Казань</div>
                         <div class="city-select__option" data-value="Moscow" >Москва</div>
                         <div class="city-select__option" data-value="Saint-Petersburg" >Санкт-Петербург</div>
                     </div>
@@ -77,15 +78,7 @@
             <section class="weather-forecast">
                 <h2 class="weather-forecast__header">Прогноз</h2>
                 <div class="weather-forecast__wrapper">
-                    <!-- <nav class="weather-forecast__controller">
-                        <button class="weather-forecast__button">
-                            <img src="src/assets/arrow.png" alt="" class="button icon weather-forecast__arrow weather-forecast__arrow--left">
-                        </button>
-                        <button class="weather-forecast__button">
-                            <img src="src/assets/arrow.png" alt="" class="button icon weather-forecast__arrow weather-forecast__arrow--right">
-                        </button>
-                    </nav> -->
-                    <div id="forecast-block" class="weather-forecast__hours">
+                    <div id="forecast-block" class="weather-forecast__hours scrollbox">
                         <article class="weather-forecast__hour">
                             <div class="temp-status temp-status--loading">
                                 <div class="temp-status__good temp-status__good--loading"></div>

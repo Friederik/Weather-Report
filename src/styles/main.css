@@ -294,4 +294,24 @@
   border-color: #FFA500;
 }
 
+.scrollbox {
+  overflow-x: hidden;
+  padding-right: 0.2rem;
+}
+.scrollbox::-webkit-scrollbar {
+  width: 12px;
+}
+.scrollbox::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+.scrollbox::-webkit-scrollbar-thumb {
+  background-color: #FFA500;
+  border-radius: 6px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+}
+.scrollbox::-webkit-scrollbar-thumb:hover {
+  background-color: #ffc14f;
+}
+
 /*# sourceMappingURL=main.css.map */
