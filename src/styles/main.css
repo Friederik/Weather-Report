@@ -40,12 +40,11 @@
 .city-select__option {
   padding: 10px 15px;
   cursor: pointer;
-  background-color: rgb(9, 80, 121);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 @media (hover: hover) {
   .city-select__option:hover {
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: 10px 15px;
+    background-color: rgba(0, 0, 0, 0.4);
   }
 }
 
