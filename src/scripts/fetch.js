@@ -44,6 +44,8 @@ function request() {
     }    
     return {
         async getData() {
+            renderLoading()
+            await new Promise(res => setTimeout(res, 1000))
             const api = `https://api.weatherapi.com/v1/` +
                         `forecast.json?key=7b7ba9234b984c6eba9115539251906` +
                         `&q=${requestData.city}` +
@@ -64,6 +66,7 @@ function request() {
                 })
                 .catch((err) => {
                     console.log(err)
+                    renderError()
                 })
         },
         changeCity(cityName) {
@@ -82,11 +85,36 @@ requestConfig.getData()
 
 // RENDER -----------------------------------------------------------------------
 
+function renderLoading() {
+    renderCurrent({
+        temp: '-',
+        tempFeels: '-',
+        wind: '-',
+        condition: 'Загрузка...',
+        icon: 'src/assets/rain.gif'
+    })
+
+    document.querySelector('.weather-forecast__hours').innerHTML = `
+        <article class="weather-forecast__hour">
+            <div class="temp-status temp-status--loading">
+                <div class="temp-status__good temp-status__good--loading"></div>
+            </div>
+        </article>
+    `
+}
+
+function renderError() {
+    document.querySelector('#current-icon').src = 'src/assets/error.png'
+    document.querySelector('.temp-status__good').classList.remove('temp-status__good--loading')
+    document.querySelector('.temp-status__good').classList.add('temp-status__good--error')
+}
+
 function renderForecastHour(hourData, goodData) {
     const hour = document.createElement('div')
    
     const time = hourData.time.getHours() + ':' + String(hourData.time.getMinutes()).padStart(2, '0')
-    // const goodK = goodData.
+    const goodK = (hourData.temp_c - goodData.min) / goodData.oneT
+    const rainAsset = Math.floor(hourData.rain / 25)
 
     hour.innerHTML = `
         <article class="weather-forecast__hour">
@@ -94,14 +122,14 @@ function renderForecastHour(hourData, goodData) {
             <img src="${hourData.icon}" alt="" class="condition-icon condition-icon--mini">
             <p class="weather-forecast__temp">${hourData.temp_c} °C</p>
             <div class="temp-status">
-                <div class="temp-status__good"></div>
+                <div style="width: ${goodK}%" class="temp-status__good"></div>
             </div>
             <div class="weather-forecast__second-data">
                 <img src="src/assets/wind.png" alt="" class="condition-icon condition-icon--xmini">
                 <p class="weather-forecast__wind">${hourData.wind} м/с</p>
             </div>
             <div class="weather-forecast__second-data">
-                <img src="src/assets/rain-1.png" alt="" class="condition-icon condition-icon--xmini">
+                <img src="src/assets/rain-${rainAsset}.png" alt="" class="condition-icon condition-icon--xmini">
                 <p class="weather-forecast__rain">${hourData.rain}%</p>
             </div>
         </article>
@@ -133,9 +161,18 @@ function renderPreviews(data) {
 function renderForecastHours(hoursData) {
     console.log(hoursData)
     const hours = document.querySelector('#forecast-block')
+    const tempMinMax = hoursData.reduce((acc, hour) => {
+        hour.temp_c = Number(hour.temp_c)
+        return [acc[0] < hour.temp_c ? acc[0] : hour.temp_c, acc[1] > hour.temp_c ? acc[1] : hour.temp_c]
+    }, [100, -100]) 
+    console.log(tempMinMax)
+
     hours.innerHTML = ''
     hoursData.forEach((hour) => {
-        hours.appendChild(renderForecastHour(hour))
+        hours.appendChild(renderForecastHour(hour, {
+            min: tempMinMax[0],
+            oneT: (tempMinMax[1] - tempMinMax[0]) / 100
+        }))
     })
     
 }
@@ -154,6 +191,13 @@ const dropdown = document.querySelector('#city-select')
 const selected = dropdown.querySelector('#city-select__selected')
 const options = dropdown.querySelector('#city-select__options')
 
+const buttons = [
+    document.querySelector('#current-time'),
+    document.querySelector('#now'),
+    document.querySelector('#tomorrow'),
+    document.querySelector('#after-tomorrow')
+]
+
 selected.addEventListener('click', () => {
   options.classList.toggle('hidden')
 })
@@ -163,6 +207,10 @@ options.querySelectorAll('.city-select__option').forEach(option => {
     selected.textContent = option.textContent
     options.classList.add('hidden')
     requestConfig.changeCity(option.dataset.value)
+    buttons.forEach((butt) => {
+        butt.classList.remove('button--selected')
+    })
+    buttons[0].classList.add('button--selected')
     await requestConfig.getData()
   })
 })
@@ -172,15 +220,6 @@ document.addEventListener('click', (e) => {
     options.classList.add('hidden')
   }
 })
-
-
-const buttons = [
-    document.querySelector('#current-time'),
-    document.querySelector('#now'),
-    document.querySelector('#tomorrow'),
-    document.querySelector('#after-tomorrow')
-]
-
 
 buttons.forEach((butt) => {
     butt.addEventListener('click', () => {

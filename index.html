@@ -31,44 +31,44 @@
                 <article class="current-weather">
                     <div class="current-weather__first-data">
                         <div class="current-weather__text">
-                            <h1 class="current-weather__temp"><span id="current-temp">26</span> °C</h1>
-                            <h2 class="current-weather__feelslike"><span class="mini-text">Ощущается как<br></span><span id="current-temp-feels">18</span> °C</h2>
-                            <h2 class="current-weather__windchill"><span class="mini-text">Ветер </span><span id="current-wind">6</span> м/c</h2>    
+                            <h1 class="current-weather__temp"><span id="current-temp">-</span> °C</h1>
+                            <h2 class="current-weather__feelslike"><span class="mini-text">Ощущается как<br></span><span id="current-temp-feels">-</span> °C</h2>
+                            <h2 class="current-weather__windchill"><span class="mini-text">Ветер </span><span id="current-wind">-</span> м/c</h2>    
                         </div>
-                        <img id="current-icon" src="src/assets/sun_demo.png" alt="" class="condition-icon condition-icon--large condition-icon--animate">
+                        <img id="current-icon" src="src/assets/rain.gif" alt="" class="condition-icon condition-icon--large condition-icon--animate">
                     </div>
                     <div class="current-weather__second-data">
-                        <h2 class="current-weather__condition"><span id="current-condition" class="mini-text">В отдельных районах местами небольшой дождь с грозой</span></h2>
+                        <h2 class="current-weather__condition"><span id="current-condition" class="mini-text">Загрузка...</span></h2>
                     </div>
                 </article>
                 <nav class="weather-data__options">
                     <article class="weather-data__option button" id="now" >
                         <div class="weather-data__date">
                             <h2 class="weather-data__day">Сегодня</h2>
-                            <h3 class="weather-data__date-number">Чт, 21 Июня</h3>
+                            <h3 class="weather-data__date-number">-</h3>
                         </div>
                         <div class="weather-data__status">
-                            <h2 class="weather-data__temp"><span class="weather-data__temp-text">18</span> °C</h2>
+                            <h2 class="weather-data__temp"><span class="weather-data__temp-text">Загрузка...</span> °C</h2>
                             <img src="src/assets/sun_demo.png" alt="" class="condition-icon condition-icon--mini">
                         </div>
                     </article>
                     <article class="weather-data__option button" id="tomorrow" >
                         <div class="weather-data__date">
                             <h2 class="weather-data__day">Завтра</h2>
-                            <h3 class="weather-data__date-number">Чт, 21 Июня</h3>
+                            <h3 class="weather-data__date-number">-</h3>
                         </div>
                         <div class="weather-data__status">
-                            <h2 class="weather-data__temp"><span class="weather-data__temp-text">18</span> °C</h2>
+                            <h2 class="weather-data__temp"><span class="weather-data__temp-text">Загрузка...</span> °C</h2>
                             <img src="src/assets/sun_demo.png" alt="" class="condition-icon condition-icon--mini">
                         </div>
                     </article>
                     <article class="weather-data__option button" id="after-tomorrow" >
                         <div class="weather-data__date">
                             <h2 class="weather-data__day">Послезавтра</h2>
-                            <h3 class="weather-data__date-number">Чт, 21 Июня</h3>
+                            <h3 class="weather-data__date-number">-</h3>
                         </div>
                         <div class="weather-data__status">
-                            <h2 class="weather-data__temp"><span class="weather-data__temp-text">18</span> °C</h2>
+                            <h2 class="weather-data__temp"><span class="weather-data__temp-text">Загрузка...</span> °C</h2>
                             <img src="src/assets/sun_demo.png" alt="" class="condition-icon condition-icon--mini">
                         </div>
                     </article>
@@ -87,35 +87,8 @@
                     </nav> -->
                     <div id="forecast-block" class="weather-forecast__hours">
                         <article class="weather-forecast__hour">
-                            <h3 class="weather-forecast__time">2:00</h3>
-                            <img src="src/assets/sun_demo.png" alt="" class="condition-icon condition-icon--mini">
-                            <p class="weather-forecast__temp">18 C</p>
-                            <div class="temp-status">
-                                <div class="temp-status__good"></div>
-                            </div>
-                            <div class="weather-forecast__second-data">
-                                <img src="src/assets/wind.png" alt="" class="condition-icon condition-icon--xmini">
-                                <p class="weather-forecast__wind">6 м/с</p>
-                            </div>
-                            <div class="weather-forecast__second-data">
-                                <img src="src/assets/rain-1.png" alt="" class="condition-icon condition-icon--xmini">
-                                <p class="weather-forecast__rain">59%</p>
-                            </div>
-                        </article>
-                        <article class="weather-forecast__hour">
-                            <h3 class="weather-forecast__time">2:00</h3>
-                            <img src="src/assets/sun_demo.png" alt="" class="condition-icon condition-icon--mini">
-                            <p class="weather-forecast__temp">18 C</p>
-                            <div class="temp-status">
-                                <div class="temp-status__good"></div>
-                            </div>
-                            <div class="weather-forecast__second-data">
-                                <img src="src/assets/wind.png" alt="" class="condition-icon condition-icon--xmini">
-                                <p class="weather-forecast__wind">6 м/с</p>
-                            </div>
-                            <div class="weather-forecast__second-data">
-                                <img src="src/assets/rain-1.png" alt="" class="condition-icon condition-icon--xmini">
-                                <p class="weather-forecast__rain">59%</p>
+                            <div class="temp-status temp-status--loading">
+                                <div class="temp-status__good temp-status__good--loading"></div>
                             </div>
                         </article>
                     </div>
