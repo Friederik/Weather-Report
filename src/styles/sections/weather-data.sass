@@ -18,11 +18,15 @@
     &__temp
         white-space: nowrap
 
+        @media (min-width: 768px)
+            font-size: 3rem
+
+    &__feelslike, &__windchill
+        @media (min-width: 768px)
+            font-size: 2rem
+
     &__second-data
         padding-block: 2vw
-
-    &__condition
-        font-size: 1.25rem
 
 .weather-data
     color: white
@@ -43,12 +47,27 @@
 
         display: flex
         flex-direction: column
+        justify-content: space-between
         gap: 0.5vw
+
+        @media (min-width: 768px)
+            flex-direction: row
+
+    &__date
+        display: flex
+        justify-content: space-between
+        flex-direction: column
 
     &__date-number
         display: none
+
+        @media (min-width: 768px)
+            display: block
 
     &__status
         display: flex
         justify-content: space-between
         align-items: center
+
+        @media (min-width: 768px)
+            flex-direction: column

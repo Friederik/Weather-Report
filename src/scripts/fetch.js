@@ -148,9 +148,11 @@ function renderPreviews(data) {
         document.querySelector('#after-tomorrow'),
     ]
 
+    const daysView = ['Вс','Пн','Вт','Ср','Чт','Пт','Сб']
+
     days.forEach((day, index) => {
         const thisDayData = data.forecast[index]
-        day.querySelector('.weather-data__date-number').textContent = thisDayData.time
+        day.querySelector('.weather-data__date-number').textContent = daysView[thisDayData.time.getDay()] + ', ' + thisDayData.time.toLocaleDateString('ru-RU', {day: 'numeric', month: 'long'})
         day.querySelector('.weather-data__temp-text').textContent = thisDayData.temp
         day.querySelector('.condition-icon').src = thisDayData.icon
     })
